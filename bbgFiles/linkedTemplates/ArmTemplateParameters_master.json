@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "bbgFiles"
+		},
+		"SFTP_BBG_password": {
+			"value": ""
+		},
+		"SFTP_BBG_properties_typeProperties_host": {
+			"value": "sftp.bloomberg.com"
+		},
+		"SFTP_BBG_properties_typeProperties_userName": {
+			"value": "emn21629263"
+		},
+		"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/9e7e6842-f162-4a04-a00e-7f0425277e7a/resourcegroups/Asset_Management/providers/Microsoft.DataFactory/factories/adf-demo-hcdemo-01/integrationruntimes/adf-demo-dfs-shir-02"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
