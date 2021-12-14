@@ -15,8 +15,8 @@
 				"container": "synology"
 			},
 			"sheetIndex": 0,
-			"range": "A6:G1000",
-			"firstRowAsHeader": true
+			"range": "",
+			"firstRowAsHeader": false
 		},
 		"schema": [
 			{
