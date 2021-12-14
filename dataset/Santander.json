@@ -1,0 +1,57 @@
+{
+	"name": "Santander",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Account_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Santander File.xls",
+				"folderPath": "Santander",
+				"container": "synology"
+			},
+			"sheetIndex": 0,
+			"range": "A6:G1000",
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Data ",
+				"type": "String"
+			},
+			{
+				"name": "Descrição ",
+				"type": "String"
+			},
+			{
+				"name": "Docto ",
+				"type": "String"
+			},
+			{
+				"name": "Situação ",
+				"type": "String"
+			},
+			{
+				"name": "Crédito (R$) ",
+				"type": "String"
+			},
+			{
+				"name": "Débito (R$) ",
+				"type": "String"
+			},
+			{
+				"name": "Saldo (R$) ",
+				"type": "String"
+			}
+		]
+	}
+}
