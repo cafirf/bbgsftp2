@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "bbgFiles"
 		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
 		"SFTP_BBG_password": {
 			"value": ""
 		},

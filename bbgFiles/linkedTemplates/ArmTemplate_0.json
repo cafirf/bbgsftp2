@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "bbgFiles"
 		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
 		"SFTP_BBG_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SFTP_BBG'"
@@ -44,21 +48,23 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/flowlet1')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"type": "Flowlet",
+				"annotations": [],
+				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"sources": [],
-					"sinks": [],
-					"transformations": [],
-					"scriptLines": [
-						""
-					]
+					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
 				}
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/SFTP_BBG')]",
@@ -85,6 +91,63 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Santander')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Santander File.xls",
+						"folderPath": "Santander",
+						"container": "synology"
+					},
+					"sheetIndex": 0,
+					"range": "",
+					"firstRowAsHeader": false
+				},
+				"schema": [
+					{
+						"name": "Data ",
+						"type": "String"
+					},
+					{
+						"name": "Descrição ",
+						"type": "String"
+					},
+					{
+						"name": "Docto ",
+						"type": "String"
+					},
+					{
+						"name": "Situação ",
+						"type": "String"
+					},
+					{
+						"name": "Crédito (R$) ",
+						"type": "String"
+					},
+					{
+						"name": "Débito (R$) ",
+						"type": "String"
+					},
+					{
+						"name": "Saldo (R$) ",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
 			]
 		},
 		{

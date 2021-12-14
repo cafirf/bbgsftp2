@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "bbgFiles"
 		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
 		"SFTP_BBG_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SFTP_BBG'"
@@ -49,6 +53,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
 					},
 					"SFTP_BBG_password": {
 						"value": "[parameters('SFTP_BBG_password')]"
