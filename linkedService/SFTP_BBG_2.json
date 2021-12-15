@@ -10,7 +10,7 @@
 			"skipHostKeyValidation": true,
 			"authenticationType": "MultiFactor",
 			"userName": "emn21629263",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhOWZlMmFkZi0yMDcwLTQzNDYtYmIyMS1lNzc2ZmVlNjMwNTkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3NDNmZGQ3MS0wMDMxLTQyZjEtODkyYy0xYmE0NjZhNjg2NTEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
