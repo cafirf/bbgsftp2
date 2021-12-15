@@ -8,9 +8,9 @@
 			"host": "sftp.bloomberg.com",
 			"port": 22,
 			"skipHostKeyValidation": true,
-			"authenticationType": "Basic",
+			"authenticationType": "MultiFactor",
 			"userName": "emn21629263",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5NDliOTYwOS0wYjEzLTRkNDUtYmI5Yy05YzU5YzJlZjdmNjEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjZTg4ZmYzOS1kZjMwLTQzNGUtOTVkNS05MmIxZjI2ZjIxOGQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime1",
