@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SFTP_BBG'"
 		},
+		"SFTP_BBG_privateKeyContent": {
+			"type": "secureString",
+			"metadata": "Secure string for 'privateKeyContent' of 'SFTP_BBG'"
+		},
+		"SFTP_BBG_passPhrase": {
+			"type": "secureString",
+			"metadata": "Secure string for 'passPhrase' of 'SFTP_BBG'"
+		},
 		"SFTP_BBG_properties_typeProperties_host": {
 			"type": "string",
 			"defaultValue": "sftp.bloomberg.com"
@@ -155,11 +163,19 @@
 					"host": "[parameters('SFTP_BBG_properties_typeProperties_host')]",
 					"port": 22,
 					"skipHostKeyValidation": true,
-					"authenticationType": "Basic",
+					"authenticationType": "MultiFactor",
 					"userName": "[parameters('SFTP_BBG_properties_typeProperties_userName')]",
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('SFTP_BBG_password')]"
+					},
+					"privateKeyContent": {
+						"type": "SecureString",
+						"value": "[parameters('SFTP_BBG_privateKeyContent')]"
+					},
+					"passPhrase": {
+						"type": "SecureString",
+						"value": "[parameters('SFTP_BBG_passPhrase')]"
 					}
 				},
 				"connectVia": {
@@ -185,6 +201,476 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/bbgEMSIExportFills01')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Export_Fill_01_21629263_20211216_151440.csv",
+						"folderPath": "bbg",
+						"container": "synology"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Order Number",
+						"type": "String"
+					},
+					{
+						"name": "Ticker",
+						"type": "String"
+					},
+					{
+						"name": "Exchange",
+						"type": "String"
+					},
+					{
+						"name": "Security Name",
+						"type": "String"
+					},
+					{
+						"name": "Instructions",
+						"type": "String"
+					},
+					{
+						"name": "Side",
+						"type": "String"
+					},
+					{
+						"name": "TIF",
+						"type": "String"
+					},
+					{
+						"name": "GTD Date",
+						"type": "String"
+					},
+					{
+						"name": "Currency",
+						"type": "String"
+					},
+					{
+						"name": "ISIN",
+						"type": "String"
+					},
+					{
+						"name": "CUSIP",
+						"type": "String"
+					},
+					{
+						"name": "SEDOL",
+						"type": "String"
+					},
+					{
+						"name": "Order Type",
+						"type": "String"
+					},
+					{
+						"name": "Limit Price",
+						"type": "String"
+					},
+					{
+						"name": "Stop Price",
+						"type": "String"
+					},
+					{
+						"name": "Amount",
+						"type": "String"
+					},
+					{
+						"name": "Fill Amount",
+						"type": "String"
+					},
+					{
+						"name": "Average Price",
+						"type": "String"
+					},
+					{
+						"name": "Day Fill Amount",
+						"type": "String"
+					},
+					{
+						"name": "Day Avg Price",
+						"type": "String"
+					},
+					{
+						"name": "Working Amount",
+						"type": "String"
+					},
+					{
+						"name": "Basket ID",
+						"type": "String"
+					},
+					{
+						"name": "Basket Name",
+						"type": "String"
+					},
+					{
+						"name": "PM Name",
+						"type": "String"
+					},
+					{
+						"name": "PM UUID",
+						"type": "String"
+					},
+					{
+						"name": "Trader Name",
+						"type": "String"
+					},
+					{
+						"name": "Trader UUID",
+						"type": "String"
+					},
+					{
+						"name": "Exec Instruction",
+						"type": "String"
+					},
+					{
+						"name": "Handling Instruction",
+						"type": "String"
+					},
+					{
+						"name": "Investor ID",
+						"type": "String"
+					},
+					{
+						"name": "Yellow Key",
+						"type": "String"
+					},
+					{
+						"name": "DS001 Ticker",
+						"type": "String"
+					},
+					{
+						"name": "Ticker + Yellow Key",
+						"type": "String"
+					},
+					{
+						"name": "Transaction Number",
+						"type": "String"
+					},
+					{
+						"name": "Tran Ticker",
+						"type": "String"
+					},
+					{
+						"name": "Tran Exch",
+						"type": "String"
+					},
+					{
+						"name": "Broker",
+						"type": "String"
+					},
+					{
+						"name": "Routed Amount",
+						"type": "String"
+					},
+					{
+						"name": "Tran Type",
+						"type": "String"
+					},
+					{
+						"name": "Tran TIF",
+						"type": "String"
+					},
+					{
+						"name": "Tran Limit Price",
+						"type": "String"
+					},
+					{
+						"name": "Tran Stop Price",
+						"type": "String"
+					},
+					{
+						"name": "Tran Account",
+						"type": "String"
+					},
+					{
+						"name": "Tran Handling Instruction",
+						"type": "String"
+					},
+					{
+						"name": "Tran Exec Instruction",
+						"type": "String"
+					},
+					{
+						"name": "Exec Filled Amount",
+						"type": "String"
+					},
+					{
+						"name": "Exec Avg Price",
+						"type": "String"
+					},
+					{
+						"name": "Exec Last Fill",
+						"type": "String"
+					},
+					{
+						"name": "Exec Last Fill Px",
+						"type": "String"
+					},
+					{
+						"name": "Exec Date",
+						"type": "String"
+					},
+					{
+						"name": "Exec Time",
+						"type": "String"
+					},
+					{
+						"name": "Exec As of Date",
+						"type": "String"
+					},
+					{
+						"name": "Exec As of Time",
+						"type": "String"
+					},
+					{
+						"name": "Tran Settlement Date",
+						"type": "String"
+					},
+					{
+						"name": "Tran Ticker + Yellow Key",
+						"type": "String"
+					},
+					{
+						"name": "Tran Net Money",
+						"type": "String"
+					},
+					{
+						"name": "Tran Commission Amount",
+						"type": "String"
+					},
+					{
+						"name": "Tran Commission Rate",
+						"type": "String"
+					},
+					{
+						"name": "Tran Reason Code",
+						"type": "String"
+					},
+					{
+						"name": "JP Trade Date59",
+						"type": "String"
+					},
+					{
+						"name": "JP Trade Date60",
+						"type": "String"
+					},
+					{
+						"name": "JP Trade Amount",
+						"type": "String"
+					},
+					{
+						"name": "JP Commission Amount",
+						"type": "String"
+					},
+					{
+						"name": "JP Tax Amount",
+						"type": "String"
+					},
+					{
+						"name": "JP Other Mrkt Fees",
+						"type": "String"
+					},
+					{
+						"name": "JP Net Money",
+						"type": "String"
+					},
+					{
+						"name": "User's Comm. Amount",
+						"type": "String"
+					},
+					{
+						"name": "User's Comm. Rate",
+						"type": "String"
+					},
+					{
+						"name": "User's Fees",
+						"type": "String"
+					},
+					{
+						"name": "User's Net Money",
+						"type": "String"
+					},
+					{
+						"name": "Exec Brkr",
+						"type": "String"
+					},
+					{
+						"name": "Order Entry Time",
+						"type": "String"
+					},
+					{
+						"name": "Strategy Type",
+						"type": "String"
+					},
+					{
+						"name": "OrderRefID",
+						"type": "String"
+					},
+					{
+						"name": "Order Create Date",
+						"type": "String"
+					},
+					{
+						"name": "Contract Expiration",
+						"type": "String"
+					},
+					{
+						"name": "Full Exch Symbol",
+						"type": "String"
+					},
+					{
+						"name": "Local Exch Symbol",
+						"type": "String"
+					},
+					{
+						"name": "Last Market",
+						"type": "String"
+					},
+					{
+						"name": "Exchange Exec Date",
+						"type": "String"
+					},
+					{
+						"name": "Exchange Exec Time",
+						"type": "String"
+					},
+					{
+						"name": "Open/Close Trans",
+						"type": "String"
+					},
+					{
+						"name": "Order Origin",
+						"type": "String"
+					},
+					{
+						"name": "Liquidity",
+						"type": "String"
+					},
+					{
+						"name": "LastCapacity",
+						"type": "String"
+					},
+					{
+						"name": "ReroutedBroker",
+						"type": "String"
+					},
+					{
+						"name": "Misc Fees",
+						"type": "String"
+					},
+					{
+						"name": "Order Exchange Date",
+						"type": "String"
+					},
+					{
+						"name": "Asset Class",
+						"type": "String"
+					},
+					{
+						"name": "BBGID",
+						"type": "String"
+					},
+					{
+						"name": "CFD Flag",
+						"type": "String"
+					},
+					{
+						"name": "Block ID",
+						"type": "String"
+					},
+					{
+						"name": "Order Create Time",
+						"type": "String"
+					},
+					{
+						"name": "Parsekey",
+						"type": "String"
+					},
+					{
+						"name": "Ticker + Exchange",
+						"type": "String"
+					},
+					{
+						"name": "Order Account",
+						"type": "String"
+					},
+					{
+						"name": "Is Leg Level",
+						"type": "String"
+					},
+					{
+						"name": "Exec/Tran Broker",
+						"type": "String"
+					},
+					{
+						"name": "OCC_Symbol",
+						"type": "String"
+					},
+					{
+						"name": "Broker Order ID",
+						"type": "String"
+					},
+					{
+						"name": "Broker Exec ID",
+						"type": "String"
+					},
+					{
+						"name": "Broker SI",
+						"type": "String"
+					},
+					{
+						"name": "Order As of Date",
+						"type": "String"
+					},
+					{
+						"name": "Order As of Time",
+						"type": "String"
+					},
+					{
+						"name": "Route As of Date",
+						"type": "String"
+					},
+					{
+						"name": "Route As of Time",
+						"type": "String"
+					},
+					{
+						"name": "Trader Notes",
+						"type": "String"
+					},
+					{
+						"name": "Exec Type",
+						"type": "String"
+					},
+					{
+						"name": "Exec Seq Number",
+						"type": "String"
+					},
+					{
+						"name": "Exec Prev Seq Number",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
 		}
 	]
 }

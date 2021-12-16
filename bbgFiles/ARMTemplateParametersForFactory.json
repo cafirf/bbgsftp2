@@ -11,6 +11,12 @@
 		"SFTP_BBG_password": {
 			"value": ""
 		},
+		"SFTP_BBG_privateKeyContent": {
+			"value": ""
+		},
+		"SFTP_BBG_passPhrase": {
+			"value": ""
+		},
 		"SFTP_BBG_properties_typeProperties_host": {
 			"value": "sftp.bloomberg.com"
 		},

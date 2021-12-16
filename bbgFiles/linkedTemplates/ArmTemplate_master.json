@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'SFTP_BBG'"
 		},
+		"SFTP_BBG_privateKeyContent": {
+			"type": "secureString",
+			"metadata": "Secure string for 'privateKeyContent' of 'SFTP_BBG'"
+		},
+		"SFTP_BBG_passPhrase": {
+			"type": "secureString",
+			"metadata": "Secure string for 'passPhrase' of 'SFTP_BBG'"
+		},
 		"SFTP_BBG_properties_typeProperties_host": {
 			"type": "string",
 			"defaultValue": "sftp.bloomberg.com"
@@ -59,6 +67,12 @@
 					},
 					"SFTP_BBG_password": {
 						"value": "[parameters('SFTP_BBG_password')]"
+					},
+					"SFTP_BBG_privateKeyContent": {
+						"value": "[parameters('SFTP_BBG_privateKeyContent')]"
+					},
+					"SFTP_BBG_passPhrase": {
+						"value": "[parameters('SFTP_BBG_passPhrase')]"
 					},
 					"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
 						"value": "[parameters('integrationRuntime1_properties_typeProperties_linkedInfo_resourceId')]"
